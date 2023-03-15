@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Material Symbols Outlined");
+@import url("https://fonts.googleapis.com/icon?family=Source Code Pro");
+@import url("https://fonts.googleapis.com/icon?family=Material Icons");
+@import url("https://fonts.googleapis.com/css?family=Rubik");
+
+@import "header.css";
+@import "content.css";
+@import "footer.css";
+
+/* credit to: https://css-tricks.com/a-clever-sticky-footer-technique/  */
+html,
+body,
+.container {
+	height: 100%;
+	margin: 0;
+}
+
+/* set up global font */
+body {
+	font: normal normal 500 17px/26.4px Rubik;
+}
+
+
+/* remove text decoration on all links */
+a {
+	text-decoration: none;
+}
+
+.container {
+	display: flex;
+	flex-flow: column;
+}
+
+/* classes to overlay elements on top of each other */
+
+.overlay-container {
+	display: grid;
+	grid-template-columns: 1fr;
+}
+
+.overlay-container div,
+.overlay-container section {
+	grid-row-start: 1;
+	grid-column-start: 1;
+}
+
+.overlay-container .overlay-ontop {
+	position: relative;
+	z-index: 1;
+}
+
+
+/* credit to https://codepen.io/jonnyscholes/pen/pjzyXO */
+
+.line-through {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.line-through:after,
+.line-through:before {
+	content: '';
+	flex: 1;
+	background: #ffffff22;
+	height: 2px;
+}
+
+.line-through:after {
+	margin-left: 10px;
+}
+
+.line-through:before {
+	margin-right: 10px;
+}
+
+/* straight lines are boring! */
+.curve-bottom {
+	margin-top: auto;
+}
+
+.curve-bottom svg {
+	transform: translateY(8px);
+}

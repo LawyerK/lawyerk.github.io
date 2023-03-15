@@ -1,0 +1,208 @@
+@import "popup.css";
+@import "contact-form.css";
+
+.content {
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    flex: 1 1 auto;
+    display: flex;
+}
+
+.content .main-container {
+    flex: 1 1 auto;
+    /* for blur effect */
+    transition: 0.3s;
+}
+
+/* cross-browser backwards compatible blur 
+ * downside to the svg fallback is no animation 
+ * also a weird bug when closing but 
+ * idfk whats goin on there and cba
+ * good enough is good enough */
+.content:target>.main-container {
+    filter: url('../images/blur.svg#blur');
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+}
+
+.content:target>.popup-container {
+    visibility: visible;
+    opacity: 1;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-content .max-width-500 {
+    max-width: 500px;
+}
+
+.main-content .max-width-1000 {
+    max-width: 1000px;
+}
+
+.main-content .rows {
+    background-color: #121922cc;
+    color: #cadafe;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    padding: 30px;
+    box-shadow: inset 0 0 5px 1px #ffffff33, 0 0 5px 1px #ffffff33;
+    filter: drop-shadow(0px 0px 10px #ffffff20);
+    border-radius: 10px;
+}
+
+.main-content .rows p {
+    font-size: 20px;
+}
+
+/* below here is kind of a jumble of styling for multiple pages
+ * todo: maybe organize this stuff */
+
+.main-content .rows .blog-content {
+    text-align: left;
+    text-indent: 2rem;
+}
+
+.main-content .rows .blog-box {
+    border: 1px solid #111111ff;
+    border-radius: 20px;
+    text-align: left;
+    padding: 15px 25px;
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+    background: #11111144;
+}
+
+.main-content .rows .blog-box h2 {
+    margin: 15px 5px 10px 0px;
+    font-size: 30px;
+}
+
+.main-content .rows .blog-box p {
+    font-size: 16px;
+    color: white;
+    margin-top: 9px;
+    margin-bottom: 9px;
+}
+
+.main-content .rows a.link {
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    color: #8aaff8;
+}
+
+.main-content .rows a.link i {
+    transition: 0.3s;
+}
+
+.main-content .rows a.link-right:hover i {
+    transform: translateX(5px);
+}
+
+.main-content .rows a.link-left:hover i {
+    transform: translateX(-5px);
+}
+
+@media only screen and (max-width: 500px) {
+    .main-content .rows p {
+        font-size: 17px !important;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .main-content .rows p {
+        font-size: 15px !important;
+    }
+}
+
+.main-content .rows .emphasis {
+    font-size: 1.2rem;
+    color: #bbffed;
+}
+
+.main-content .rows .aqua {
+    color: #5cb7da;
+}
+
+.main-content .rows .twice-as-big {
+    font-size: 2rem;
+}
+
+.main-content .rows .emphasis i {
+    margin-right: 10px;
+}
+
+.main-content .rows a.emphasis {
+    border-bottom: 1px solid #bbffed3e;
+    transition: 0.3s;
+}
+
+.main-content .rows a.emphasis:hover {
+    border-bottom: 1px solid #bbffedff;
+}
+
+.main-content .rows .me {
+    border-radius: 50%;
+    width: 10rem;
+}
+
+.main-content .rows .flex-row {
+    display: flex;
+    gap: 30px;
+}
+
+.main-content .rows .links a img {
+    transition: 0.3s;
+    margin: 0 1rem;
+    width: 3rem;
+}
+
+/* hover grow animation */
+.main-content .rows .links a img:hover {
+    filter: drop-shadow(0 0 10px #ffffff40);
+    transform: scale(1.05);
+}
+
+/* click shrink animation */
+.main-content .rows .links a img:active {
+    transform: scale(0.95);
+    transition: 0.05s;
+}
+
+.main-content .rows .btn {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding: 6px 10px;
+    border: 2px solid #ffffffcc;
+    background-color: #11111155;
+    color: #fff;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.main-content .rows .btn .LEFT {
+    margin-left: 5px;
+}
+
+.main-content .rows .btn .RIGHT {
+    margin-right: 5px;
+}
+
+.main-content .rows .btn:hover {
+    filter: drop-shadow(0 0 10px #ffffff55);
+}
+
+.main-content .rows .btn:active {
+    transform: scale(0.95);
+    transition: 0.05s;
+}

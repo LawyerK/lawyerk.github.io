@@ -1,0 +1,151 @@
+/* --------------- contact form -------------------- */
+
+.contact-form {
+    --gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    text-align: left;
+}
+
+.contact-form input {
+    height: 30px;
+}
+
+.contact-form label {
+    margin-left: 5px;
+}
+
+.contact-form textarea,
+.contact-form input {
+    background-color: #12192299;
+    color: #fff;
+}
+
+.contact-form textarea,
+.contact-form input,
+.contact-form textarea::placeholder,
+.contact-form input::placeholder {
+    border-radius: 5px;
+    filter: drop-shadow(3px 3px 3px #00000033);
+    font: normal normal 500 17px/26.4px Rubik;
+    outline: none;
+    transition: 0.3s;
+    padding: 5px;
+}
+
+.contact-form textarea::placeholder,
+.contact-form input::placeholder {
+    color: #ffffff99;
+}
+
+.contact-form textarea {
+    box-sizing: border-box;
+    max-width: calc(var(--max-width) - 8px - 5px);
+    max-height: 1000px;
+    min-height: 300px;
+    min-width: 800px;
+    transition: none;
+}
+
+/* hacky but idrc lol */
+@media only screen and (max-width: 1000px) {
+    .contact-form textarea {
+        max-width: 600px;
+        min-width: 400px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .contact-form textarea {
+        max-width: 400px;
+        min-width: 250px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .contact-form textarea {
+        max-width: 300px;
+        min-width: 250px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .contact-form textarea {
+        max-width: 200px;
+        min-width: 250px;
+    }
+}
+
+@media only screen and (max-height: 1300px) {
+    .contact-form textarea {
+        max-height: 500px;
+    }
+}
+
+@media only screen and (max-height: 1000px) {
+    .contact-form textarea {
+        max-height: 300px;
+        min-height: 300px;
+    }
+}
+
+@media only screen and (max-height: 750px) {
+    .contact-form textarea {
+        max-height: 300px;
+        min-height: 150px;
+    }
+}
+
+@media only screen and (max-height: 600px) {
+    .contact-form textarea {
+        max-height: 300px;
+        min-height: 80px;
+    }
+}
+
+.contact-form textarea:focus,
+.contact-form input:focus {
+    border: 1px solid #689e48;
+}
+
+.contact-form textarea:valid,
+.contact-form input:valid {
+    border: 1px solid #689e48;
+}
+
+.contact-form textarea:invalid,
+.contact-form input:invalid {
+    border: 1px solid #ff0000;
+}
+
+.contact-form textarea:invalid~button,
+.contact-form input:invalid~button {
+    border: 1px solid #ff0000 !important;
+    transform: scale(1) !important;
+    color: #ffffff55;
+    cursor: default;
+}
+
+.contact-form button {
+    align-self: center;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 5px;
+    border: 1px solid #ffffff33;
+    width: 100px;
+    background-color: #12192299;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    border: 1px solid #689e48;
+    outline: none;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.contact-form button:active {
+    transform: scale(0.95);
+}

@@ -1,0 +1,46 @@
+.footer {
+    display: flex;
+    justify-content: center;
+
+    position: sticky;
+    top: 100vh;
+}
+
+.footer .footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+}
+
+.footer .footer-content div {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer .footer-content a {
+    padding: 4px;
+}
+
+.footer .footer-content a img {
+    /* 0.3s transition on all animations */
+    vertical-align: middle;
+    transition: 0.5s;
+    padding: 3px 6px;
+    width: 20px;
+}
+
+/* hover grow animation */
+.footer .footer-content a img:hover {
+    filter: drop-shadow(0 0 5px #00000080);
+}
+
+/* click shrink animation */
+.footer .footer-content a img:active {
+    transition: 0.05s !important;
+    transform: scale(0.9);
+}

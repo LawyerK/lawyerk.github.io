@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/icon?family=Material Icons");
+@import url("https://fonts.googleapis.com/icon?family=Verdana");
+
+html,
+body {
+    font-family: Verdana;
+    color: #000040d0;
+    margin: 0;
+}
+
+.container {
+    margin: 30px;
+    max-width: 1000px;
+}
+
+.big {
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 40px;
+}
+
+.smol {
+    font-size: 15px;
+    font-weight: 100;
+}
+
+header {
+    padding: 5px 30px;
+}
+
+.section {
+    border-left: 1px solid #434d54;
+    padding: 1px 30px;
+    color: #000000ee;
+}
+
+.section .c {
+    position: relative;
+}
+
+.section .c .summary {
+    margin-left: 25px;
+}
+
+.section .c:before {
+    box-sizing: border-box;
+    position: absolute;
+    left: -34.5px;
+    border-color: #343b40;
+    top: 6px;
+    content: "";
+    height: 8px;
+    width: 8px;
+    border: 1px solid #434d54;
+    border-radius: 100%;
+    background: #fff;
+    z-index: 2;
+}
+
+.section h4 {
+    margin: 1px;
+}
+
+.section div .two-column {
+    column-count: 2;
+}
+
+@media only screen and (max-width: 650px) {
+    .section div .two-column {
+        column-count: 1;
+    }
+}
+
+.section div ul li {
+    margin: 3px;
+}
+
+.section .right {
+    font-style: italic;
+    float: right;
+}

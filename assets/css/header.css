@@ -1,0 +1,92 @@
+.header {
+    box-shadow: 0 5px 10px rgb(68 70 90 / 20%);
+
+    display: flex;
+    justify-content: center;
+}
+
+.header-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex: 1 1 auto;
+    padding: 3px;
+}
+
+.header .header-content .header-left {
+    display: flex;
+    flex: 1 1 auto;
+
+    justify-content: center;
+    align-items: center;
+
+    font-family: Source Code Pro;
+    font-weight: bold;
+    font-size: 25px;
+    color: #000055;
+}
+
+.header .header-content .header-left div {
+    transition: 1s;
+}
+
+.header .header-content a {
+    text-decoration: none;
+    text-align: center;
+
+    filter: drop-shadow(4px 4px 4px #00000020);
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin: 4px;
+    color: #000;
+}
+
+/* transition must apply to element as a whole, 
+* not just on :hover to get smooth animation 
+* both ways 
+*/
+.header .header-content a,
+.header .header-content a i {
+    transition: 0.3s;
+}
+
+/* nav buttons and active page turn green on hover, except for logo */
+.header .header-content a:hover:not(.header-left),
+.header .header-content .active {
+    background-color: #CCE3BF;
+}
+
+/* nav buttons grow on hover, except for logo */
+.header .header-content a:hover:not(.header-left) {
+    transform: scale(1.05);
+}
+
+/* nav buttons shrink on click */
+.header .header-content a:active {
+    transform: scale(0.95) !important;
+    transition: 0.05s !important;
+}
+
+/* nav item icons turn blue and rotate on hover */
+.header .header-content a:hover i {
+    transform: rotateZ(10deg);
+    color: #0000ff;
+}
+
+.header .header-content .header-right {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 1 1 auto;
+}
+
+.header .header-content .header-right a {
+    display: flex;
+    align-items: center;
+}
+
+.header .header-content .header-right a i {
+    margin-right: 5px;
+}

@@ -1,0 +1,187 @@
+<!doctype html>
+
+<!-- 
+	Kieran Lawyer, CTI110-0071
+
+	Programmed manually with help from CTI110 class material,
+	and various articles found on google. 
+-->
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Kieran Lawyer</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description"
+		content="Kieran Lawyer is a self-taught backend software developer with 7 years of experience. He is currently taking classes at Wake Tech community college">
+	<meta name="keywords"
+		content="kieran, lawyer, kieranlawyer, software, developer, javascript, nodejs, c, c++, golang">
+	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/snow.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div class="container">
+		<header class="header">
+			<div class="header-content">
+				<a href="index.html" class="header-left" id="logo">
+					Kieran Lawyer
+				</a>
+				<nav class="header-right">
+					<a href="index.html" class="active">
+						<i class="material-icons">home</i>Home
+					</a>
+					<a href="about.html">
+						<i class="material-icons">person</i> About</a>
+					<a href="wip.html">
+						<i class="material-icons">emoji_objects</i>Skills
+					</a>
+					<a href="wip.html">
+						<i class="material-icons">timeline</i>Timeline
+					</a>
+					<a href="blogs/index.html">
+						<i class="material-icons">feed</i>Blogs
+					</a>
+				</nav>
+			</div>
+		</header>
+
+		<!-- 
+			This got a bit complicated. The goal is a pure css cross-browser popup with blur backdrop.
+			The main section is an overlay container with 2 children - the popup and the main content.
+			The popup is ontop. The main section also can be targeted at #contact-popup.
+			Once the main element is targeted:
+				1. The popup becomes visible
+				2. The main content gets blurred
+			Since the popup is not part of the main content, it is not blurred.
+			The much easier way is to leverage backdrop-filter, but browser support is lacking.
+			Or leveraging javascript to apply blur would have made it easier too, but boooring!
+
+			The overlay classes are used once more in the main content to get snow in background 
+			and content on top.
+
+			NOTE: weird bug happens on chrome with inspect element open
+				where transitions will play on page load. 
+				Things like font family/size/spacing, opacity, etc. will transition from
+				their default values to the base values specified by the css styling.
+				This should not happen. It is a bug in chrome. It's not a big issue though,
+				as people will rarely fulfill the conditions under which the bug occurs.
+				Most notable artifact of this bug is the popup transitioning from opacity 
+				1 to 0 on page load, which looks odd and buggy.
+		-->
+
+		<main class="content overlay-container" id="contact-popup">
+			<div for="checkbox" class="popup-container overlay-ontop">
+				<div class="popup">
+					<div class="popup-header">
+						<h1 class="line-through">Contact</h1>
+						<a class="close" href="#">&times;</a>
+					</div>
+					<div class="popup-content">
+						<form class="contact-form">
+							<label for="name">Name</label>
+							<input required id="name" type="text" title="Name" placeholder="Enter your name">
+							<label for="email">Email</label>
+							<input required id="email" type="email" title="Email" placeholder="Enter your email">
+							<label for="message">Message</label>
+							<textarea required id="message" placeholder="Enter your message"></textarea>
+							<button type="submit">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- Straight lines are boring! -->
+			<div class="curve-top">
+				<svg viewBox="0 0 500 50">
+					<path fill="#fff" d="M0,0 C150,5 350,0 500,0 L500,0 L0,0 Z"></path>
+				</svg>
+			</div>
+
+			<div class="curve-bottom">
+				<svg viewBox="0 0 500 50" preserveAspectRatio="xMinYMin meet">
+					<path fill="#fff" d="M500,50 C350,45 150,50 0,50 L0,50 L500,50 Z"></path>
+				</svg>
+			</div>
+
+			<div class="main-container overlay-container">
+				<div id="snow-container">
+					<!-- Filled in by snow.js -->
+				</div>
+
+				<div class="main-content overlay-ontop">
+					<div class="rows max-width-500">
+						<h1 class="line-through">
+							<span class="emphasis twice-as-big">
+								<i class="material-symbols-outlined">waving_hand</i>Welcome!
+							</span>
+						</h1>
+						<img class="me" src="assets/images/me.png" alt="A picture of me">
+						<!-- WIP cross-browser text gradient -->
+						<!-- <svg width="100%" height="100%" viewBox="0 0 300 24">
+							<defs>
+								<lineargradient id="rainbow" x1="0" x2="0" y1="0" y2="100%"
+									gradientUnits="userSpaceOnUse">
+									<stop stop-color="#EAFC37" offset="0%"></stop>
+									<stop stop-color="#4FCB6B" offset="50%"></stop>
+									<stop stop-color="#51F7FE" offset="100%"></stop>
+								</lineargradient>
+							</defs>
+							<text textLength="290" lengthAdjust="spacing" x="5" y="20" fill="url(#rainbow)">
+								Software Developer, College Student
+							</text>
+						</svg> -->
+						<h2>Software Developer, College Student</h2>
+						<p>
+							Don't hesitate to reach out to me if you have any questions or if you are interested in
+							collaborating on a project!
+						</p>
+						<div class="links">
+							<a href="https://www.linkedin.com/in/lawyerki/" target="_blank" rel="noopener">
+								<img src="assets/images/linkedin-light_theme.svg" alt="Linkedin Logo">
+							</a>
+							<a href="https://github.com/LawyerK/" target="_blank" rel="noopener">
+								<img src="assets/images/github-dark_theme.svg" alt="Github Logo">
+							</a>
+						</div>
+						<div class="flex-row">
+							<a class="btn" href="resume.html" target="_blank">
+								<i class="material-icons RIGHT">open_in_new</i>Resume
+							</a>
+							<a class="btn" href="#contact-popup">
+								Contact<i class="material-icons LEFT">email</i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer class="footer">
+			<div class="footer-content">
+				<div>
+					<small>
+						© 2023 · All rights reserved -
+						<a href="mailto:lawyerki@gmail.com">Contact me</a>
+					</small>
+				</div>
+				<div>
+					<a href="https://www.linkedin.com/in/lawyerki/" target="_blank" rel="noopener">
+						<img src="assets/images/linkedin-light_theme.svg" alt="Linkedin Logo">
+					</a>
+					<a href="https://github.com/LawyerK/" target="_blank" rel="noopener">
+						<img src="assets/images/github-light_theme.svg" alt="Github Logo">
+					</a>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<!-- import script after all html is loaded  -->
+	<script src="assets/js/snow.js"></script>
+</body>
+
+</html>
+
+<!-- This file is my own work and I typed everything manually, Lawyer -->
