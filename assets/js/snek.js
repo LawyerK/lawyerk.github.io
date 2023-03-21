@@ -77,6 +77,9 @@ function loop() {
                 document.getElementById('high').innerHTML = '&nbsp;' + max;
                 set_score(0);
 
+                localStorage.setItem('high_score', max);
+                localStorage.setItem('cksum', comp_cksum(max));
+
                 food.x = rand(0, 25) * grid;
                 food.y = rand(0, 25) * grid;
                 snake.x = 160;
@@ -118,11 +121,11 @@ document.addEventListener('keydown', e => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    max = localStorage.getItem('max_score') || 0;
+    max = localStorage.getItem('high_score') || 0;
     let cksum = localStorage.getItem('cksum');
 
     if (comp_cksum(max) != cksum) {
-        localStorage.removeItem('max_score');
+        localStorage.removeItem('high_score');
         localStorage.removeItem('cksum');
         cksum = 0;
         max = 0;
