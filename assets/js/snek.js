@@ -4,8 +4,7 @@ const canvas = document.getElementById('game'),
 let grid = 16,
     score = 0,
     max = 0,
-    mul = 0,
-    ivl;
+    lk, ivl;
 
 const snake = {
     x: 160,
@@ -30,19 +29,27 @@ function set_score(new_score) {
 
     document.getElementById('score').innerHTML = `&nbsp;${score}`;
 
-    let new_mul = Math.floor(score / 5);
-
-    if (new_mul != mul) {
-        clearInterval(ivl);
-        mul = new_mul;
-        const speed = Math.min(60, 10 + 2 * mul);
-        ivl = setInterval(loop, 1000 / speed);
-        console.log(speed);
-    }
+    clearInterval(ivl);
+    const speed = Math.min(300, 100 + 2 * score);
+    ivl = setInterval(loop, 10000 / speed);
 }
 
 function loop() {
     context.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (lk === 'w' && snake.dy === 0) {
+        snake.dy = -grid;
+        snake.dx = 0;
+    } else if (lk === 'a' && snake.dx === 0) {
+        snake.dx = -grid;
+        snake.dy = 0;
+    } else if (lk === 's' && snake.dy === 0) {
+        snake.dy = grid;
+        snake.dx = 0;
+    } else if (lk === 'd' && snake.dx === 0) {
+        snake.dx = grid;
+        snake.dy = 0;
+    }
 
     snake.x = wrap(snake.x + snake.dx, canvas.width);
     snake.y = wrap(snake.y + snake.dy, canvas.height);
@@ -96,24 +103,13 @@ function loop() {
 let leet = ['1', '3', '3', '7'], teel = 0;
 
 document.addEventListener('keydown', e => {
-    let k = e.key.toLowerCase();
-    if (k === 'w' && snake.dy === 0) {
-        snake.dy = -grid;
-        snake.dx = 0;
-    } else if (k === 'a' && snake.dx === 0) {
-        snake.dx = -grid;
-        snake.dy = 0;
-    } else if (k === 's' && snake.dy === 0) {
-        snake.dy = grid;
-        snake.dx = 0;
-    } else if (k === 'd' && snake.dx === 0) {
-        snake.dx = grid;
-        snake.dy = 0;
-    }
+    let k = e.key;
+    lk = k;
 
     if (k == leet[teel]) {
         if (++teel == leet.length) {
             alert('HACKER!');
+            snake.maxCells = Math.max(snake.maxCells, 25);
             set_score(Math.round((score + 1337) / 1337) * 1337);
             teel = 0;
         }
