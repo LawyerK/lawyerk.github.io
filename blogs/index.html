@@ -19,6 +19,7 @@
         content="kieran, lawyer, kieranlawyer, software, developer, javascript, nodejs, c, c++, golang">
     <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
     <link href="../assets/css/snow.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/snek.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -34,13 +35,13 @@
                     </a>
                     <a href="../about.html">
                         <i class="material-icons">person</i> About</a>
-                    <a href="../wip.html">
+                    <a href="#not-finished-yet">
                         <i class="material-icons">emoji_objects</i>Skills
                     </a>
-                    <a href="../wip.html">
+                    <a href="#not-finished-yet">
                         <i class="material-icons">timeline</i>Timeline
                     </a>
-                    <a href="index.html" class="active">
+                    <a href="#" class="active">
                         <i class="material-icons">feed</i>Blogs
                     </a>
                 </nav>
@@ -48,53 +49,109 @@
         </header>
 
         <main class="content overlay-container">
-            <div id="snow-container">
-                <!-- Filled in by snow.js -->
+            <div hidden id="not-finished-yet"></div>
+
+            <div class="popup-container overlay-ontop not-finished-yet">
+                <a class="popup-backdrop-close" href="#" title="Click to close"></a>
+                <div class="popup">
+                    <div class="popup-header">
+                        <h1 class="line-through">Contact</h1>
+                        <a class="close" href="#">&times;</a>
+                    </div>
+                    <div class="popup-content">
+                        <h2>Sorry, this page has not been completed yet. Please enjoy SNEK instead.</h2>
+                        <p class="score">Score:<span id="score">&nbsp0</span></p>
+                        <p class="high-score">High Score:<span id="high"></span></p>
+                        <canvas width="400" height="400" id="game"></canvas>
+                        <script src="../assets/js/snek.js"></script>
+                        <noscript>
+                            OOF, no javascript? ok.. no snek for you.
+                        </noscript>
+                    </div>
+                </div>
             </div>
 
-            <div class="overlay-ontop main-content">
-                <div class="rows">
-                    <div class="max-width-1000">
-                        <h1 class="line-through">
-                            <span class="emphasis twice-as-big">
-                                <i class="material-icons">article</i>Blogs
-                            </span>
-                        </h1>
-                        <p>
-                            Here you can read about my accomplishments in more detail. I hope that you will find
-                            some parts interesting or helpful!
-                        </p>
-                        <section class="blog-box">
-                            <h2>Origin Story</h2>
-                            <p>Follow the story of an unassuming seventh-grader who stumbles upon a way to gain an
-                                unfair advantage in the game
-                                Agar.io, sparking a journey of self-taught programming and the thrill of overcoming
-                                hurdles. But when the game developers catch on and roll out an update, the young
-                                programmer and others continue their pursuit, learning how to reverse engineer the
-                                codebase and overcome encryption.</p>
-                            <a href="origin_story.html" class="link link-right">Read Full Story <i
-                                    class="material-icons">arrow_right_alt</i></a>
-                        </section>
-                        <section class="blog-box">
-                            <h2>Lorem Ipsum</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nisi diam, bibendum vitae
-                                sollicitudin in, tempor quis metus. In ligula quam, sodales non elit quis, rhoncus
-                                dictum augue. In tristique, orci eget sodales fermentum, ligula ex dapibus justo, a
-                                iaculis nunc nisl nec est. Suspendisse sodales pulvinar nisl eu dapibus. Mauris pretium
-                                libero quis eros aliquet accumsan. Morbi arcu nunc, imperdiet in ultrices quis,
-                                pellentesque et nunc. </p>
-                            <a href="../wip.html" class="link link-right">Read More <i
-                                    class="material-icons">arrow_right_alt</i></a>
-                        </section>
-                        <section class="blog-box">
-                            <h2>Dolor Sit</h2>
-                            <p>Morbi posuere sed odio in hendrerit. Nulla ornare massa ut nibh vehicula, sed vehicula
-                                mauris mattis. Pellentesque pellentesque maximus sagittis. Sed bibendum massa arcu, id
-                                egestas velit tincidunt ac. Suspendisse nec mauris vitae neque eleifend posuere sed
-                                vitae justo. </p>
-                            <a href="../wip.html" class="link link-right">Read More <i
-                                    class="material-icons">arrow_right_alt</i></a>
-                        </section>
+            <!-- Straight lines are boring! -->
+            <div class="curve curve-top">
+                <svg viewBox="0 0 500 50">
+                    <!-- <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
+            						<fecomponenttransfer in="SourceAlpha">
+            							<fefunca type="table" tableValues="1 0" />
+            						</fecomponenttransfer>
+            						<fegaussianblur stdDeviation="3" />
+            						<feoffset dx="5" dy="5" result="offsetblur" />
+            						<feflood flood-color="rgb(20, 0, 0)" result="color" />
+            						<fecomposite in2="offsetblur" operator="in" />
+            						<fecomposite in2="SourceAlpha" operator="in" />
+            						<femerge>
+            							<femergenode in="SourceGraphic" />
+            							<femergenode />
+            						</femerge>
+            					</filter> -->
+                    <path fill="#fff" d="M0,0 C150,5 350,0 500,0 L500,0 L0,0 Z" filter="url(#inset-shadow)"></path>
+                </svg>
+            </div>
+
+            <div class="curve curve-bottom">
+                <svg viewBox="0 0 500 50" preserveAspectRatio="xMinYMin meet">
+                    <path fill="#fff" d="M500,50 C350,45 150,50 0,50 L0,50 L500,50 Z"></path>
+                </svg>
+            </div>
+
+
+            <div class="main-container overlay-container">
+                <div id="snow-container">
+                    <!-- Filled in by snow.js -->
+                </div>
+
+                <div class="overlay-ontop main-content">
+                    <div class="rows">
+                        <div class="max-width-1000">
+                            <h1 class="line-through">
+                                <span class="emphasis twice-as-big">
+                                    <i class="material-icons">article</i>Blogs
+                                </span>
+                            </h1>
+                            <p>
+                                Here you can read about my accomplishments in more detail. I hope that you will find
+                                some parts interesting or helpful!
+                            </p>
+                            <section class="blog-box">
+                                <h2>Origin Story</h2>
+                                <p>Follow the story of an unassuming seventh-grader who stumbles upon a way to gain an
+                                    unfair advantage in the game
+                                    Agar.io, sparking a journey of self-taught programming and the thrill of overcoming
+                                    hurdles. But when the game developers catch on and roll out an update, the young
+                                    programmer and others continue their pursuit, learning how to reverse engineer the
+                                    codebase and overcome encryption.</p>
+                                <a href="origin_story.html" class="link link-right">Read Full Story <i
+                                        class="material-icons">arrow_right_alt</i></a>
+                            </section>
+                            <section class="blog-box">
+                                <h2>Lorem Ipsum</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nisi diam, bibendum
+                                    vitae
+                                    sollicitudin in, tempor quis metus. In ligula quam, sodales non elit quis, rhoncus
+                                    dictum augue. In tristique, orci eget sodales fermentum, ligula ex dapibus justo, a
+                                    iaculis nunc nisl nec est. Suspendisse sodales pulvinar nisl eu dapibus. Mauris
+                                    pretium
+                                    libero quis eros aliquet accumsan. Morbi arcu nunc, imperdiet in ultrices quis,
+                                    pellentesque et nunc. </p>
+                                <a href="../wip.html" class="link link-right">Read More <i
+                                        class="material-icons">arrow_right_alt</i></a>
+                            </section>
+                            <section class="blog-box">
+                                <h2>Dolor Sit</h2>
+                                <p>Morbi posuere sed odio in hendrerit. Nulla ornare massa ut nibh vehicula, sed
+                                    vehicula
+                                    mauris mattis. Pellentesque pellentesque maximus sagittis. Sed bibendum massa arcu,
+                                    id
+                                    egestas velit tincidunt ac. Suspendisse nec mauris vitae neque eleifend posuere sed
+                                    vitae justo. </p>
+                                <a href="../wip.html" class="link link-right">Read More <i
+                                        class="material-icons">arrow_right_alt</i></a>
+                            </section>
+                        </div>
                     </div>
                 </div>
             </div>

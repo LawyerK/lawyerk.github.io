@@ -18,7 +18,8 @@
     <meta name="keywords"
         content="kieran, lawyer, kieranlawyer, software, developer, javascript, nodejs, c, c++, golang">
     <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
-    <link href="../assets/css/snow.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/snek.css" rel="stylesheet" type="text/css">
+    <!-- <link href="../assets/css/snow.css" rel="stylesheet" type="text/css"> -->
 </head>
 
 <body>
@@ -34,10 +35,10 @@
                     </a>
                     <a href="../about.html">
                         <i class="material-icons">person</i> About</a>
-                    <a href="../wip.html">
+                    <a href="#not-finished-yet">
                         <i class="material-icons">emoji_objects</i>Skills
                     </a>
-                    <a href="../wip.html">
+                    <a href="#not-finished-yet">
                         <i class="material-icons">timeline</i>Timeline
                     </a>
                     <a href="./index.html">
@@ -48,204 +49,320 @@
         </header>
 
         <main class="content overlay-container">
-            <div id="snow-container">
-                <!-- Filled in by snow.js -->
+            <div hidden id="not-finished-yet"></div>
+
+            <div class="popup-container overlay-ontop not-finished-yet">
+                <a class="popup-backdrop-close" href="#" title="Click to close"></a>
+                <div class="popup">
+                    <div class="popup-header">
+                        <h1 class="line-through">Contact</h1>
+                        <a class="close" href="#">&times;</a>
+                    </div>
+                    <div class="popup-content">
+                        <h2>Sorry, this page has not been completed yet. Please enjoy SNEK instead.</h2>
+                        <p class="score">Score:<span id="score">&nbsp0</span></p>
+                        <p class="high-score">High Score:<span id="high"></span></p>
+                        <canvas width="400" height="400" id="game"></canvas>
+                        <script src="../assets/js/snek.js"></script>
+                        <noscript>
+                            OOF, no javascript? ok.. no snek for you.
+                        </noscript>
+                    </div>
+                </div>
             </div>
 
-            <div class="overlay-ontop main-content">
-                <div class="rows">
-                    <div class="max-width-1000">
-                        <h1 class="line-through">
-                            <span class="emphasis twice-as-big">
-                                <i class="material-icons">article</i>Origin Story
-                            </span>
-                        </h1>
-                        <div class="blog-content">
-                            <p>At the start of 7th grade, I was just like most of my peers. When I got home from school,
-                                I
-                                did my homework, and spent my free time playing with my friends or using the computer. I
-                                often watched YouTube videos or played video games. One day, while watching a YouTube
-                                video,
-                                I learned of this new and simple multiplayer browser game called Agar.io. The concept
-                                behind
-                                the game was quite simple: you spawn in as a small cell, and you eat other cells to grow
-                                bigger. The goal of the game was to get to the #1 place on the leaderboard. As you gain
-                                mass, your decay rate grows higher and consuming smaller cells will no longer increase
-                                your
-                                mass. The bigger you get, the hungrier you are. </p>
-                            <p>One day while playing this simple game, I saw something peculiar happen. In one lobby I
-                                joined, a bunch of players with the same name spawned in, and all appeared to be
-                                converging
-                                upon one location. The player they were converging upon was #1 on the leaderboard. Those
-                                players were named raga.pw, advertising a website. This website was selling these bots
-                                as a
-                                service. I had just stumbled upon someone who had found a way to gain an unfair
-                                advantage.
-                            </p>
-                            <p>I have always been a technically minded person. I always push to find out how things
-                                work.
-                                So, as was natural for me, I became consumed with curiosity on how this was done, and
-                                how I
-                                could replicate it.</p>
-                            <p>After doing some research, I came up with very little in the way of a complete example of
-                                how
-                                to do what I wanted. This website, raga.pw, was the first to come up with the idea, and
-                                their intentions were clear – to make a profit off it. Unlikely that they would be
-                                giving
-                                out advice or help any time soon. I was left with only one option if I wished to fulfill
-                                my
-                                goal: to create it myself. </p>
-                            <p>With this new path in mind, my search terms changed. No longer was I looking for a
-                                complete
-                                example, but rather some way to interact with the game, to automate the control of a
-                                “player.” I was very lucky to come across an open-source library on GitHub called
-                                agario-client created by a man who went by the name pulviscriptor. This library, written
-                                in
-                                node.js, offered a rich API by which one could spawn and control a player in any public
-                                game
-                                lobby on agar.io.</p>
-                            <p>My first attempts were, as would be expected, quite crude. But, after many after-school
-                                evenings, much research, dedication, and many iterations, I fulfilled my goal. I just,
-                                with
-                                only the help of my search-engine skills and google, taught myself how to program.</p>
-                            <p>Satisfied and happy, but not satiated, I continued to refine my program and to research &
-                                learn more. I had a new goal in mind – to remove my dependency on the agario-client
-                                library.
-                                This implied learning how it worked and replicating it. Using a such a library with a
-                                concise API is quite a lot easier than wrangling with WebSocket connections & composing
-                                and
-                                decoding binary payloads, but I had set my mind to it.</p>
-                            <p>Learning how to establish a WebSocket connection was the easy part – it was also just
-                                utilizing an API and passing configuration options. Composing binary data, however, was
-                                quite different from what I had done thus far. This is where I learned what bits and
-                                bytes
-                                are, why they are useful, and, of course, how they needed to be assembled to communicate
-                                with the agar.io servers.</p>
-                            <p>By this point, more and more people had caught on to the whole bot concept. Some realized
-                                the
-                                monetary potential involved, and some competitors to raga.pw started to emerge. The game
-                                started to be overrun by bots provided by such websites.</p>
-                            <p>Shortly after the re-write of my codebase, no longer depending upon the agario-client
-                                library, things got complicated. Suddenly, one day, my whole program no longer worked.
-                                By
-                                intercepting and logging the binary data the official agar.io website was communicating,
-                                I
-                                realized that things had changed drastically. The data I was logging was complete
-                                garbage!
-                                One packet to the next, there was no obvious pattern. From what I knew, the “spawn”
-                                operation code should have been code 0x00, but from one spawn to the next there was no
-                                consistency. </p>
-                            <p>As it turns out, Miniclip, the company that acquired the game from the original creator
-                                Matheus Valadares, had caught on to the whole bot pandemic and deployed countermeasures.
-                                They had rolled out a major update, where the codebase for the client had been
-                                re-written in
-                                C++ and compiled to JavaScript using the compiler toolchain emscripten. This resulted in
-                                a
-                                nearly uninterpretable 200,000 lines of JavaScript output. As a bonus, they had
-                                encrypted
-                                the whole protocol and added a new ‘challenge’ opcode, with the code responsible hidden
-                                within that mass of illegible code.</p>
-                            <p>This, of course, did not stop neither me nor or others from pursuing out endeavors. For
-                                me,
-                                it was about the thrill of overcoming hurdles, learning more, and winning at this cat
-                                and
-                                mouse game. For others, it was about keeping their source of income flowing.</p>
-                            <p>By this point I was familiar with the whole agario binary protocol & the old codebase.
-                                Though
-                                the new 200,000 lines of emscripten-generated JavaScript was difficult to read,
-                                well-supported JavaScript debugging tools available on modern web browsers such as
-                                resource
-                                override, breakpoints, and traces, along with my expectation for what things should look
-                                &
-                                behave like, made it possible to reverse engineer. It was an XOR-based encryption with a
-                                semi-arbitrary key rotation algorithm after each packet had been sent. This explains why
-                                the
-                                spawn opcode seemed to change each time I spawned.</p>
-                            <p>While the cat and mouse game continued, I started to work towards starting my own website
-                                to
-                                sell bots. By now there were a couple, and they had started to partake in some devious
-                                practices. Agario had an account and leveling system. The higher your level, the more
-                                starting mass you spawn with, up to a limit of 45. Bot companies started to add code to
-                                their browser extensions to steal their users accounts and use them on the bots, as a
-                                special more expensive option. This was made possible by their pre-existing userbase,
-                                and
-                                users of these services quickly became addicted to this new option. So, not only was I
-                                not
-                                willing to partake in such practices, but I also just plain couldn’t. If I was to start
-                                my
-                                own website, I would need to find a way around this.</p>
-                            <p>By now, edging into the summer between 7th and 8th grade, agario had launched their
-                                mobile
-                                app, which, unlike the desktop version, had guest accounts. I became curious how similar
-                                the
-                                mobile app was to the desktop version. I assumed that, if they could re-use code between
-                                the
-                                two, or even share the same code, they probably would. So I started to reverse engineer
-                                their mobile application and learn how the guest accounts worked. I took a snapshot of
-                                the
-                                binary payload sent to the mobile server to login and shipped it off to a desktop
-                                server,
-                                and VOILÀ! I got logged in to the guest account.</p>
-                            <p>It turned out that all you had to do to generate a guest account was send a special
-                                opcode,
-                                and the server would respond with the unique token that identified that account. So now
-                                I
-                                had a way to create and use guest accounts which could be leveled up and claim all the
-                                same
-                                advantages as a Facebook/Google login.</p>
-                            <p>If I was going to start a website at this point, I couldn’t pull users by just matching
-                                the
-                                other services. I had to exceed them somehow. So, I added to my program a sort of AI,
-                                where
-                                the bots could navigate the map, gain mass by themselves, and avoid being consumed by
-                                other
-                                players. This had the advantage of providing the perfect mechanism for me to level up
-                                all my
-                                freshly generated guest accounts, so they all spawned with the maximum 45 mass.</p>
-                            <p>While I had a pretty good understanding of backend development by now, I had no
-                                experience
-                                writing a website. To get started, I found an online tutorial that provided sample html
-                                and
-                                CSS code and used that as a starting point. I looked up PHP tutorials and started to
-                                work on
-                                integrating a full registration/login/password reset system backed by a MySQL database.
-                                I
-                                added an admin panel for adding/editing the plans I provided, PayPal payments, and a
-                                coin
-                                system. Each user account had a UUID associated with it. Users would install my
-                                userscript,
-                                which injected code into the agar.io website, insert additional UI elements to the page,
-                                and
-                                establish a connection to my server. The user would paste their UUID into the newly
-                                added
-                                box, which would get sent to the server to authorize them. When they spawned into the
-                                game,
-                                a notification would be sent to my sever. If they had a valid UUID with sufficient
-                                coins, it
-                                would spawn bots into their lobby, and they would navigate to the location of their
-                                master,
-                                avoiding other players on their way.</p>
-                            <p>While working on my program one day, after editing some code, I spawned into a lobby and
-                                oddly got kicked out of it instantly. I joined a new one, spawned, and again instant
-                                kick.
-                                Or so I thought. To sort out the confusion, I got a friend to join the same lobby as me
-                                and
-                                tell me what he saw. So I spawn into the game, and we both got kicked. </p>
-                            <p>It turned out that, apparently, logging in to a guest account while already logged in to
-                                an
-                                account caused the server to instantly crash. Funny how a mistake led to such a
-                                discovery.
-                            </p>
-                            <p>Though I had quite the journey, and had learned and grown a substantial amount while
-                                walking
-                                this path, I soon grew bored of the game and had to move on. So, that is the story of my
-                                adventure into computer networking, binary data, web design, databases, reverse
-                                engineering,
-                                problem solving, and of course programming languages & software development.</p>
-                            <a href="./index.html" class="link link-left">
-                                <i class="material-icons">west</i>
-                                Return to Blogs
-                            </a>
+            <!-- Straight lines are boring! -->
+            <div class="curve curve-top">
+                <svg viewBox="0 0 500 50">
+                    <!-- <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                        <fecomponenttransfer in="SourceAlpha">
+                            <fefunca type="table" tableValues="1 0" />
+                        </fecomponenttransfer>
+                        <fegaussianblur stdDeviation="3" />
+                        <feoffset dx="5" dy="5" result="offsetblur" />
+                        <feflood flood-color="rgb(20, 0, 0)" result="color" />
+                        <fecomposite in2="offsetblur" operator="in" />
+                        <fecomposite in2="SourceAlpha" operator="in" />
+                        <femerge>
+                            <femergenode in="SourceGraphic" />
+                            <femergenode />
+                        </femerge>
+                    </filter> -->
+                    <path fill="#fff" d="M0,0 C150,5 350,0 500,0 L500,0 L0,0 Z" filter="url(#inset-shadow)"></path>
+                </svg>
+            </div>
+
+            <div class="curve curve-bottom">
+                <svg viewBox="0 0 500 50" preserveAspectRatio="xMinYMin meet">
+                    <path fill="#fff" d="M500,50 C350,45 150,50 0,50 L0,50 L500,50 Z"></path>
+                </svg>
+            </div>
+
+            <div class="main-container overlay-container">
+                <!-- <div id="snow-container">
+                    Filled in by snow.js
+                </div> -->
+
+                <div class="overlay-ontop main-content">
+                    <div class="rows">
+                        <div class="max-width-1000">
+                            <h1 class="line-through">
+                                <span class="emphasis twice-as-big">
+                                    <i class="material-icons">article</i>Origin Story
+                                </span>
+                            </h1>
+                            <div class="blog-content">
+                                <p>At the start of 7th grade, I was just like most of my peers. When I got home from
+                                    school,
+                                    I
+                                    did my homework, and spent my free time playing with my friends or using the
+                                    computer. I
+                                    often watched YouTube videos or played video games. One day, while watching a
+                                    YouTube
+                                    video,
+                                    I learned of this new and simple multiplayer browser game called Agar.io. The
+                                    concept
+                                    behind
+                                    the game was quite simple: you spawn in as a small cell, and you eat other cells to
+                                    grow
+                                    bigger. The goal of the game was to get to the #1 place on the leaderboard. As you
+                                    gain
+                                    mass, your decay rate grows higher and consuming smaller cells will no longer
+                                    increase
+                                    your
+                                    mass. The bigger you get, the hungrier you are. </p>
+                                <p>One day while playing this simple game, I saw something peculiar happen. In one lobby
+                                    I
+                                    joined, a bunch of players with the same name spawned in, and all appeared to be
+                                    converging
+                                    upon one location. The player they were converging upon was #1 on the leaderboard.
+                                    Those
+                                    players were named raga.pw, advertising a website. This website was selling these
+                                    bots
+                                    as a
+                                    service. I had just stumbled upon someone who had found a way to gain an unfair
+                                    advantage.
+                                </p>
+                                <p>I have always been a technically minded person. I always push to find out how things
+                                    work.
+                                    So, as was natural for me, I became consumed with curiosity on how this was done,
+                                    and
+                                    how I
+                                    could replicate it.</p>
+                                <p>After doing some research, I came up with very little in the way of a complete
+                                    example of
+                                    how
+                                    to do what I wanted. This website, raga.pw, was the first to come up with the idea,
+                                    and
+                                    their intentions were clear – to make a profit off it. Unlikely that they would be
+                                    giving
+                                    out advice or help any time soon. I was left with only one option if I wished to
+                                    fulfill
+                                    my
+                                    goal: to create it myself. </p>
+                                <p>With this new path in mind, my search terms changed. No longer was I looking for a
+                                    complete
+                                    example, but rather some way to interact with the game, to automate the control of a
+                                    “player.” I was very lucky to come across an open-source library on GitHub called
+                                    agario-client created by a man who went by the name pulviscriptor. This library,
+                                    written
+                                    in
+                                    node.js, offered a rich API by which one could spawn and control a player in any
+                                    public
+                                    game
+                                    lobby on agar.io.</p>
+                                <p>My first attempts were, as would be expected, quite crude. But, after many
+                                    after-school
+                                    evenings, much research, dedication, and many iterations, I fulfilled my goal. I
+                                    just,
+                                    with
+                                    only the help of my search-engine skills and google, taught myself how to program.
+                                </p>
+                                <p>Satisfied and happy, but not satiated, I continued to refine my program and to
+                                    research &
+                                    learn more. I had a new goal in mind – to remove my dependency on the agario-client
+                                    library.
+                                    This implied learning how it worked and replicating it. Using a such a library with
+                                    a
+                                    concise API is quite a lot easier than wrangling with WebSocket connections &
+                                    composing
+                                    and
+                                    decoding binary payloads, but I had set my mind to it.</p>
+                                <p>Learning how to establish a WebSocket connection was the easy part – it was also just
+                                    utilizing an API and passing configuration options. Composing binary data, however,
+                                    was
+                                    quite different from what I had done thus far. This is where I learned what bits and
+                                    bytes
+                                    are, why they are useful, and, of course, how they needed to be assembled to
+                                    communicate
+                                    with the agar.io servers.</p>
+                                <p>By this point, more and more people had caught on to the whole bot concept. Some
+                                    realized
+                                    the
+                                    monetary potential involved, and some competitors to raga.pw started to emerge. The
+                                    game
+                                    started to be overrun by bots provided by such websites.</p>
+                                <p>Shortly after the re-write of my codebase, no longer depending upon the agario-client
+                                    library, things got complicated. Suddenly, one day, my whole program no longer
+                                    worked.
+                                    By
+                                    intercepting and logging the binary data the official agar.io website was
+                                    communicating,
+                                    I
+                                    realized that things had changed drastically. The data I was logging was complete
+                                    garbage!
+                                    One packet to the next, there was no obvious pattern. From what I knew, the “spawn”
+                                    operation code should have been code 0x00, but from one spawn to the next there was
+                                    no
+                                    consistency. </p>
+                                <p>As it turns out, Miniclip, the company that acquired the game from the original
+                                    creator
+                                    Matheus Valadares, had caught on to the whole bot pandemic and deployed
+                                    countermeasures.
+                                    They had rolled out a major update, where the codebase for the client had been
+                                    re-written in
+                                    C++ and compiled to JavaScript using the compiler toolchain emscripten. This
+                                    resulted in
+                                    a
+                                    nearly uninterpretable 200,000 lines of JavaScript output. As a bonus, they had
+                                    encrypted
+                                    the whole protocol and added a new ‘challenge’ opcode, with the code responsible
+                                    hidden
+                                    within that mass of illegible code.</p>
+                                <p>This, of course, did not stop neither me nor or others from pursuing out endeavors.
+                                    For
+                                    me,
+                                    it was about the thrill of overcoming hurdles, learning more, and winning at this
+                                    cat
+                                    and
+                                    mouse game. For others, it was about keeping their source of income flowing.</p>
+                                <p>By this point I was familiar with the whole agario binary protocol & the old
+                                    codebase.
+                                    Though
+                                    the new 200,000 lines of emscripten-generated JavaScript was difficult to read,
+                                    well-supported JavaScript debugging tools available on modern web browsers such as
+                                    resource
+                                    override, breakpoints, and traces, along with my expectation for what things should
+                                    look
+                                    &
+                                    behave like, made it possible to reverse engineer. It was an XOR-based encryption
+                                    with a
+                                    semi-arbitrary key rotation algorithm after each packet had been sent. This explains
+                                    why
+                                    the
+                                    spawn opcode seemed to change each time I spawned.</p>
+                                <p>While the cat and mouse game continued, I started to work towards starting my own
+                                    website
+                                    to
+                                    sell bots. By now there were a couple, and they had started to partake in some
+                                    devious
+                                    practices. Agario had an account and leveling system. The higher your level, the
+                                    more
+                                    starting mass you spawn with, up to a limit of 45. Bot companies started to add code
+                                    to
+                                    their browser extensions to steal their users accounts and use them on the bots, as
+                                    a
+                                    special more expensive option. This was made possible by their pre-existing
+                                    userbase,
+                                    and
+                                    users of these services quickly became addicted to this new option. So, not only was
+                                    I
+                                    not
+                                    willing to partake in such practices, but I also just plain couldn’t. If I was to
+                                    start
+                                    my
+                                    own website, I would need to find a way around this.</p>
+                                <p>By now, edging into the summer between 7th and 8th grade, agario had launched their
+                                    mobile
+                                    app, which, unlike the desktop version, had guest accounts. I became curious how
+                                    similar
+                                    the
+                                    mobile app was to the desktop version. I assumed that, if they could re-use code
+                                    between
+                                    the
+                                    two, or even share the same code, they probably would. So I started to reverse
+                                    engineer
+                                    their mobile application and learn how the guest accounts worked. I took a snapshot
+                                    of
+                                    the
+                                    binary payload sent to the mobile server to login and shipped it off to a desktop
+                                    server,
+                                    and VOILÀ! I got logged in to the guest account.</p>
+                                <p>It turned out that all you had to do to generate a guest account was send a special
+                                    opcode,
+                                    and the server would respond with the unique token that identified that account. So
+                                    now
+                                    I
+                                    had a way to create and use guest accounts which could be leveled up and claim all
+                                    the
+                                    same
+                                    advantages as a Facebook/Google login.</p>
+                                <p>If I was going to start a website at this point, I couldn’t pull users by just
+                                    matching
+                                    the
+                                    other services. I had to exceed them somehow. So, I added to my program a sort of
+                                    AI,
+                                    where
+                                    the bots could navigate the map, gain mass by themselves, and avoid being consumed
+                                    by
+                                    other
+                                    players. This had the advantage of providing the perfect mechanism for me to level
+                                    up
+                                    all my
+                                    freshly generated guest accounts, so they all spawned with the maximum 45 mass.</p>
+                                <p>While I had a pretty good understanding of backend development by now, I had no
+                                    experience
+                                    writing a website. To get started, I found an online tutorial that provided sample
+                                    html
+                                    and
+                                    CSS code and used that as a starting point. I looked up PHP tutorials and started to
+                                    work on
+                                    integrating a full registration/login/password reset system backed by a MySQL
+                                    database.
+                                    I
+                                    added an admin panel for adding/editing the plans I provided, PayPal payments, and a
+                                    coin
+                                    system. Each user account had a UUID associated with it. Users would install my
+                                    userscript,
+                                    which injected code into the agar.io website, insert additional UI elements to the
+                                    page,
+                                    and
+                                    establish a connection to my server. The user would paste their UUID into the newly
+                                    added
+                                    box, which would get sent to the server to authorize them. When they spawned into
+                                    the
+                                    game,
+                                    a notification would be sent to my sever. If they had a valid UUID with sufficient
+                                    coins, it
+                                    would spawn bots into their lobby, and they would navigate to the location of their
+                                    master,
+                                    avoiding other players on their way.</p>
+                                <p>While working on my program one day, after editing some code, I spawned into a lobby
+                                    and
+                                    oddly got kicked out of it instantly. I joined a new one, spawned, and again instant
+                                    kick.
+                                    Or so I thought. To sort out the confusion, I got a friend to join the same lobby as
+                                    me
+                                    and
+                                    tell me what he saw. So I spawn into the game, and we both got kicked. </p>
+                                <p>It turned out that, apparently, logging in to a guest account while already logged in
+                                    to
+                                    an
+                                    account caused the server to instantly crash. Funny how a mistake led to such a
+                                    discovery.
+                                </p>
+                                <p>Though I had quite the journey, and had learned and grown a substantial amount while
+                                    walking
+                                    this path, I soon grew bored of the game and had to move on. So, that is the story
+                                    of my
+                                    adventure into computer networking, binary data, web design, databases, reverse
+                                    engineering,
+                                    problem solving, and of course programming languages & software development.</p>
+                                <a href="./index.html" class="link link-left">
+                                    <i class="material-icons">west</i>
+                                    Return to Blogs
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -273,7 +390,7 @@
     </div>
 
     <!-- import script after all html is loaded  -->
-    <script src="../assets/js/snow.js"></script>
+    <!-- <script src="../assets/js/snow.js"></script> -->
 </body>
 
 </html>

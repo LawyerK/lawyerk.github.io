@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/icon?family=Material Icons");
 @import url("https://fonts.googleapis.com/css?family=Rubik");
 
+@import "toggle-switch.css";
 @import "header.css";
 @import "content.css";
 @import "footer.css";
@@ -29,7 +30,24 @@ a {
 .container {
 	display: flex;
 	flex-flow: column;
+	--zoom: 1.2;
 }
+
+@supports (zoom: var(--zoom)) {
+	.container {
+		zoom: var(--zoom);
+	}
+}
+
+@supports not (zoom: var(--zoom)) {
+	.container {
+		width: calc(100% / var(--zoom));
+		height: calc(100% / var(--zoom));
+		transform: scale(var(--zoom));
+		transform-origin: top left;
+	}
+}
+
 
 /* classes to overlay elements on top of each other */
 

@@ -1,0 +1,35 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+canvas {
+    border-radius: 5px;
+    border: 1px solid #ffffff99;
+    background-color: #33333340;
+}
+
+.score {
+    color: #CCC9DC;
+    font-size: 30px;
+}
+
+.high-score {
+    color: #CCC9DC;
+    margin-top: 35px;
+    font-size: 30px;
+}
+
+#score {
+    color: yellow;
+}
+
+#high {
+    color: #E43F5A;
+}
+
+.car-fire {
+    font-size: 5px;
+    color: #55555511;
+}

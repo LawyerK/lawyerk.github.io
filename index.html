@@ -19,25 +19,26 @@
 		content="kieran, lawyer, kieranlawyer, software, developer, javascript, nodejs, c, c++, golang">
 	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/snow.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/snek.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 	<div class="container">
 		<header class="header">
 			<div class="header-content">
-				<a href="index.html" class="header-left" id="logo">
+				<a href="#" class="header-left" id="logo">
 					Kieran Lawyer
 				</a>
 				<nav class="header-right">
-					<a href="index.html" class="active">
+					<a href="#" class="active">
 						<i class="material-icons">home</i>Home
 					</a>
 					<a href="about.html">
 						<i class="material-icons">person</i> About</a>
-					<a href="wip.html">
+					<a href="#not-finished-yet">
 						<i class="material-icons">emoji_objects</i>Skills
 					</a>
-					<a href="wip.html">
+					<a href="#not-finished-yet">
 						<i class="material-icons">timeline</i>Timeline
 					</a>
 					<a href="blogs/index.html">
@@ -71,15 +72,26 @@
 				1 to 0 on page load, which looks odd and buggy.
 		-->
 
-		<main class="content overlay-container" id="contact-popup">
-			<div for="checkbox" class="popup-container overlay-ontop">
+		<main class="content overlay-container">
+			<!-- hidden popup selector elements -->
+			<div hidden id="not-finished-yet"></div>
+			<div hidden id="contact-popup"></div>
+
+			<!-- 
+				optimally, I wouldn't duplicate the popup container code 
+				for multiple popups, but this proved difficult. 
+				This way is much easier!
+			-->
+
+			<div class="popup-container overlay-ontop contact-popup">
+				<a class="popup-backdrop-close" href="#" title="Click to close"></a>
 				<div class="popup">
 					<div class="popup-header">
 						<h1 class="line-through">Contact</h1>
 						<a class="close" href="#">&times;</a>
 					</div>
 					<div class="popup-content">
-						<form class="contact-form">
+						<form class="contact-form" action="#">
 							<label for="name">Name</label>
 							<input required id="name" type="text" title="Name" placeholder="Enter your name">
 							<label for="email">Email</label>
@@ -92,14 +104,48 @@
 				</div>
 			</div>
 
+			<div class="popup-container overlay-ontop not-finished-yet">
+				<a class="popup-backdrop-close" href="#" title="Click to close"></a>
+				<div class="popup">
+					<div class="popup-header">
+						<h1 class="line-through">Contact</h1>
+						<a class="close" href="#">&times;</a>
+					</div>
+					<div class="popup-content">
+						<h2>Sorry, this page has not been completed yet. Please enjoy SNEK instead.</h2>
+						<p class="score">Score:<span id="score">&nbsp0</span></p>
+						<p class="high-score">High Score:<span id="high"></span></p>
+						<canvas width="400" height="400" id="game"></canvas>
+						<script src="assets/js/snek.js"></script>
+						<noscript>
+							OOF, no javascript? ok.. no snek for you.
+						</noscript>
+					</div>
+				</div>
+			</div>
+
 			<!-- Straight lines are boring! -->
-			<div class="curve-top">
+			<div class="curve curve-top">
 				<svg viewBox="0 0 500 50">
-					<path fill="#fff" d="M0,0 C150,5 350,0 500,0 L500,0 L0,0 Z"></path>
+					<!-- <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
+						<fecomponenttransfer in="SourceAlpha">
+							<fefunca type="table" tableValues="1 0" />
+						</fecomponenttransfer>
+						<fegaussianblur stdDeviation="3" />
+						<feoffset dx="5" dy="5" result="offsetblur" />
+						<feflood flood-color="rgb(20, 0, 0)" result="color" />
+						<fecomposite in2="offsetblur" operator="in" />
+						<fecomposite in2="SourceAlpha" operator="in" />
+						<femerge>
+							<femergenode in="SourceGraphic" />
+							<femergenode />
+						</femerge>
+					</filter> -->
+					<path fill="#fff" d="M0,0 C150,5 350,0 500,0 L500,0 L0,0 Z" filter="url(#inset-shadow)"></path>
 				</svg>
 			</div>
 
-			<div class="curve-bottom">
+			<div class="curve curve-bottom">
 				<svg viewBox="0 0 500 50" preserveAspectRatio="xMinYMin meet">
 					<path fill="#fff" d="M500,50 C350,45 150,50 0,50 L0,50 L500,50 Z"></path>
 				</svg>
@@ -160,19 +206,23 @@
 
 		<footer class="footer">
 			<div class="footer-content">
-				<div>
+				<div class="footer-container">
 					<small>
 						© 2023 · All rights reserved -
 						<a href="mailto:lawyerki@gmail.com">Contact me</a>
 					</small>
 				</div>
-				<div>
+				<div class="footer-container">
 					<a href="https://www.linkedin.com/in/lawyerki/" target="_blank" rel="noopener">
 						<img src="assets/images/linkedin-light_theme.svg" alt="Linkedin Logo">
 					</a>
 					<a href="https://github.com/LawyerK/" target="_blank" rel="noopener">
 						<img src="assets/images/github-light_theme.svg" alt="Github Logo">
 					</a>
+					<!-- <div class="switch-container">
+						<input class="tgl tgl-flat" id="snow-toggle" type="checkbox" placeholder="snow-toggle" />
+						<label class="tgl-btn" for="snow-toggle"></label>
+					</div> -->
 				</div>
 			</div>
 		</footer>
